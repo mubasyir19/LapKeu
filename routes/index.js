@@ -13,6 +13,9 @@ router.get('/registrasi', account.viewRegistrasi);
 // Dashboard
 router.get('/dashboard', dashboard.viewDashboard);
 
+// Account
+router.get('/list-account', account.viewListAccount);
+
 // CoA
 router.get('/coa', coa.viewCoa);
 

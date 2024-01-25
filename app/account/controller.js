@@ -43,4 +43,22 @@ module.exports = {
     try {
     } catch (error) {}
   },
+  viewListAccount: async (req, res) => {
+    try {
+      const alertMessage = req.flash('alertMessage');
+      const alertStatus = req.flash('alertStatus');
+
+      const alert = { message: alertMessage, status: alertStatus };
+
+      res.render('admin/list-account/view_list-account', {
+        route: 'List Account',
+        alert,
+      });
+    } catch (error) {
+      console.log(error);
+      req.flash('alertMessage', `Terjadi Masalah`);
+      req.flash('alertStatus', 'danger');
+      res.redirect('/dashboard');
+    }
+  },
 };

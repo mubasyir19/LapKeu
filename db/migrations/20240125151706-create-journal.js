@@ -21,10 +21,10 @@ module.exports = {
         type: Sequelize.STRING,
       },
       debit: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
       },
       kredit: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,

@@ -15,7 +15,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       amount: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
       },
       date: {
         type: Sequelize.DATE,

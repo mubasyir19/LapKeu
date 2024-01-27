@@ -1,4 +1,6 @@
 const { account } = require('../../db/models');
+const bcrypt = require('bcrypt');
+const uuid = require('uuid');
 
 module.exports = {
   viewLogin: async (req, res) => {
@@ -80,12 +82,7 @@ module.exports = {
   actionRegistrasi: async (req, res) => {
     try {
       const { fullname, username, password, confirmPassword } = req.body;
-
-      if (password !== confirmPassword) {
-        req.flash('alertMessage', `Password dan confirm password tidak cocok`);
-        req.flash('alertStatus', 'danger');
-        res.redirect('/registrasi');
-      }
+      const accountId = uuid.v4();
 
       const checkAccount = await account.findOne({ where: { fullname: fullname } });
       if (checkAccount) {
@@ -94,12 +91,24 @@ module.exports = {
         res.redirect('/registrasi');
       }
 
-      const account = await account.create({
+      if (password !== confirmPassword) {
+        req.flash('alertMessage', `Password dan confirm password tidak cocok`);
+        req.flash('alertStatus', 'danger');
+        res.redirect('/registrasi');
+      }
+
+      await account.create({
+        id: accountId,
         fullname,
         username,
         password: bcrypt.hashSync(password, 10),
         role: 'Yayasan',
       });
+
+      req.flash('alertMessage', 'Berhasil registrasi akun');
+      req.flash('alertStatus', 'success');
+
+      res.redirect('/');
     } catch (error) {
       console.log(error);
       req.flash('alertMessage', `Terjadi Masalah`);

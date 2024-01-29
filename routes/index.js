@@ -24,6 +24,7 @@ router.get('/coa', coa.viewCoa);
 // Catatan
 router.get('/catatan', catatan.viewCatatan);
 router.get('/catatan/tambah', catatan.viewAddCatatan);
+router.post('/catatan/tambah', catatan.actionAddCatatan);
 
 // Jurnal
 router.get('/jurnal', jurnal.viewJurnal);

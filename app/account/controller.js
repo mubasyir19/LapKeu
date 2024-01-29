@@ -32,14 +32,14 @@ module.exports = {
       });
 
       if (checkAccount) {
-        const checkPass = await bcrypt.compare(password, checkUser.password);
+        const checkPass = await bcrypt.compare(password, checkAccount.password);
 
         if (checkPass) {
           req.session.account = {
-            id: checkUser.id,
-            fullname: checkUser.name,
-            username: checkUser.username,
-            role: checkUser.role,
+            id: checkAccount.id,
+            fullname: checkAccount.fullname,
+            username: checkAccount.username,
+            role: checkAccount.role,
           };
 
           // Response Success Login

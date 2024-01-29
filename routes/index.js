@@ -8,6 +8,7 @@ const jurnal = require('../app/jurnal/controller');
 
 // authentication
 router.get('/', account.viewLogin);
+router.post('/', account.actionLogin);
 router.get('/registrasi', account.viewRegistrasi);
 router.post('/registrasi', account.actionRegistrasi);
 

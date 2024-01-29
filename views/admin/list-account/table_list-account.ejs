@@ -7,17 +7,17 @@
     </tr>
   </thead>
   <tbody>
-    <%# for(let i = 0; i < getAllCategory.length; i++) { %>
+    <% for(let i = 0; i < listAccount.length; i++) { %>
     <tr>
-      <td><%#= i + 1 %></td>
-      <td><%#= getAllCategory[i].name %></td>
+      <td><%= i + 1 %></td>
+      <td><%= listAccount[i].fullname %></td>
       <td class="d-flex">
-        <a href="/list-account/category/edit/<%#= getAllCategory[i].id %>" class="btn btn-info btn-sm">
+        <a href="/list-account/<%= listAccount[i].id %>" class="btn btn-info btn-sm">
           <i class="fas fa-pencil-alt"></i>
           Ubah
         </a>
       </td>
     </tr>
-    <%# } %>
+    <% } %>
   </tbody>
 </table>

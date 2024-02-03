@@ -58,4 +58,53 @@ module.exports = {
       res.redirect('/coa');
     }
   },
+  viewEditCoa: async (req, res) => {
+    try {
+      const { id } = req.params;
+
+      const dataCoa = await coa.findOne({
+        where: {
+          id: id,
+        },
+      });
+
+      res.render('admin/coa/edit_coa', {
+        route: 'Coa',
+        dataCoa,
+      });
+    } catch (error) {
+      console.log(error);
+      req.flash('alertMessage', `Terjadi Masalah`);
+      req.flash('alertStatus', 'danger');
+      res.redirect('/coa');
+    }
+  },
+  actionEditCoa: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { code, name, position } = req.body;
+
+      const coa = await coa.findOne({
+        where: {
+          id: id,
+        },
+      });
+
+      await coa.update({
+        code,
+        name,
+        position,
+      });
+
+      req.flash('alertMessage', 'Coa berhasil diubah');
+      req.flash('alertStatus', 'success');
+
+      res.redirect('/coa');
+    } catch (error) {
+      console.log(error);
+      req.flash('alertMessage', `Terjadi Masalah`);
+      req.flash('alertStatus', 'danger');
+      res.redirect('/coa');
+    }
+  },
 };

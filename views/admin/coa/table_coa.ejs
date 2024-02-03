@@ -12,11 +12,19 @@
     <% for(let i = 0; i < listCoa.length; i++) { %>
     <tr>
       <td><%= i + 1 %></td>
-      <td><%= listCoa[i].code %></td>
+      <td>
+        <span class="badge badge-success"><%= listCoa[i].code %></span>
+      </td>
       <td><%= listCoa[i].name %></td>
-      <td><%= listCoa[i].position %></td>
+      <td>
+        <% if (listCoa[i].position === 'Debit') { %>
+        <span class="badge badge-primary"><%= listCoa[i].position %></span>
+        <% } else { %>
+        <span class="badge badge-warning"><%= listCoa[i].position %></span>
+        <% } %>
+      </td>
       <td class="d-flex">
-        <a href="#<%#= listCoa[i].id %>" class="btn btn-info btn-sm">
+        <a href="/coa/edit/<%= listCoa[i].id %>" class="btn btn-info btn-sm">
           <i class="fas fa-pencil-alt"></i>
           Ubah
         </a>

@@ -30,15 +30,19 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="/article/add" method="post" enctype="multipart/form-data">
+                <form action="/catatan/tambah" method="post">
                   <div class="card-body">
                     <div class="form-group">
-                      <label for="title">Masukkan Keterangan</label>
-                      <input type="text" name="title" class="form-control" id="title" placeholder="Masukkan keterangan" required>
+                      <label for="description">Masukkan Keterangan</label>
+                      <input type="text" name="description" class="form-control" id="description" placeholder="Masukkan keterangan" required>
                     </div>
                     <div class="form-group">
-                      <label for="title">Masukkan Jumlah</label>
-                      <input type="text" name="title" class="form-control" id="title" placeholder="Masukkan jumlah" required>
+                      <label for="amount">Masukkan Jumlah</label>
+                      <input type="text" name="amount" class="form-control" id="amount" placeholder="Masukkan jumlah" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="date">Pilih Tanggal</label>
+                      <input type="date" name="date" class="form-control" id="date" placeholder="Pilih tanggal" required>
                     </div>
                   </div>
                   <div class="card-footer">

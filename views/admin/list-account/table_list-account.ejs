@@ -3,6 +3,7 @@
     <tr>
       <th>No.</th>
       <th>Nama Yayasan</th>
+      <th>Role</th>
       <th></th>
     </tr>
   </thead>
@@ -11,6 +12,9 @@
     <tr>
       <td><%= i + 1 %></td>
       <td><%= listAccount[i].fullname %></td>
+      <td>
+        <span class="badge badge-success"> <%= listAccount[i].role %> </span>
+      </td>
       <td class="d-flex">
         <a href="/list-account/<%= listAccount[i].id %>" class="btn btn-info btn-sm">
           <i class="fas fa-pencil-alt"></i>

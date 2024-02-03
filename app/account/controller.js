@@ -124,10 +124,11 @@ module.exports = {
       const alert = { message: alertMessage, status: alertStatus };
 
       const listAccount = await account.findAll({
+        where: {
+          role: 'Yayasan',
+        },
         attributes: ['id', 'fullname', 'username', 'role'],
       });
-
-      console.log(listAccount);
 
       res.render('admin/list-account/view_list-account', {
         route: 'List Account',

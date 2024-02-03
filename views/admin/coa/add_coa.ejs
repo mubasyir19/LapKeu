@@ -1,0 +1,67 @@
+<%- include ("../../partials/header.ejs") %>
+<%- include ("../../partials/navbar.ejs") %>
+<%- include ("../../partials/sidebar.ejs") %>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Tambah Chart Of Accounts</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item"><a href="/coa">Coa</a></li>
+              <li class="breadcrumb-item active">Tambah Coa</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card card-primary">
+                <div class="card-header">
+                  <h3 class="card-title">Form Tambah Chart Of Accounts</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form action="/coa/tambah" method="post">
+                  <div class="card-body">
+                    <div class="form-group">
+                      <label for="code">Masukkan Kode</label>
+                      <input type="text" name="code" class="form-control" id="code" placeholder="Masukkan kode" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="name">Masukkan Nama Akun</label>
+                      <input type="text" name="name" class="form-control" id="name" placeholder="Masukkan nama akun" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Pilih Posisi</label>
+                        <select class="form-control select2" style="width: 100%;" name="position" required>
+                            <option selected="selected">Pilih Posisi</option>
+                            <option value="Debit">Debit</option>
+                            <option value="Kredit">Kredit</option>
+                        </select>
+                      </div>
+                  </div>
+                  <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                  </div>
+                </form>
+              </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+
+<%- include ("../../partials/footer.ejs") %>
+<%- include ("../../partials/js.ejs") %>

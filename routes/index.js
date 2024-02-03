@@ -22,6 +22,8 @@ router.get('/list-account', account.viewListAccount);
 
 // CoA
 router.get('/coa', coa.viewCoa);
+router.get('/coa/tambah', coa.viewAddCoa);
+router.post('/coa/tambah', coa.actionAddCoa);
 
 // Catatan
 router.get('/list-catatan', catatan.viewListCatatan);

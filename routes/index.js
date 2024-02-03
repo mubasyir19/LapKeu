@@ -11,6 +11,8 @@ router.get('/', account.viewLogin);
 router.post('/', account.actionLogin);
 router.get('/registrasi', account.viewRegistrasi);
 router.post('/registrasi', account.actionRegistrasi);
+router.post('/registrasi', account.actionRegistrasi);
+router.get('/logout', account.actionLogout);
 
 // Dashboard
 router.get('/dashboard', dashboard.viewDashboard);

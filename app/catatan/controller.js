@@ -9,7 +9,12 @@ module.exports = {
 
       const alert = { message: alertMessage, status: alertStatus };
 
-      const listCatatan = await note.findAll();
+      let user = req.session.account.id;
+      const listCatatan = await note.findAll({
+        where: {
+          id_account: user,
+        },
+      });
 
       res.render('admin/catatan/view_catatan', {
         route: 'Catatan',

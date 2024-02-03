@@ -141,4 +141,8 @@ module.exports = {
       res.redirect('/dashboard');
     }
   },
+  actionLogout: async (req, res) => {
+    req.session.destroy();
+    res.redirect('/');
+  },
 };

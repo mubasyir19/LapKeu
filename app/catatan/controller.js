@@ -12,7 +12,7 @@ module.exports = {
       const listAllCatatan = await note.findAll({
         include: {
           model: account,
-          // attributes: ['fullname', 'username'],
+          attributes: ['fullname', 'username'],
         },
       });
 

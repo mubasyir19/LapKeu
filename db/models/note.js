@@ -9,6 +9,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      note.belongsTo(models.account, {
+        foreignKey: 'id_account',
+      });
     }
   }
   note.init(

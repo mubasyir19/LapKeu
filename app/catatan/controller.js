@@ -1,7 +1,33 @@
-const { note } = require('../../db/models');
+const { note, account } = require('../../db/models');
 const uuid = require('uuid');
 
 module.exports = {
+  viewListCatatan: async (req, res) => {
+    try {
+      const alertMessage = req.flash('alertMessage');
+      const alertStatus = req.flash('alertStatus');
+
+      const alert = { message: alertMessage, status: alertStatus };
+
+      const listAllCatatan = await note.findAll({
+        include: {
+          model: account,
+          // attributes: ['fullname', 'username'],
+        },
+      });
+
+      res.render('admin/list-catatan/view_list-catatan', {
+        route: 'List Catatan',
+        listAllCatatan,
+        alert,
+      });
+    } catch (error) {
+      console.log(error);
+      req.flash('alertMessage', `Terjadi Masalah`);
+      req.flash('alertStatus', 'danger');
+      res.redirect('/list-catatan');
+    }
+  },
   viewCatatan: async (req, res) => {
     try {
       const alertMessage = req.flash('alertMessage');

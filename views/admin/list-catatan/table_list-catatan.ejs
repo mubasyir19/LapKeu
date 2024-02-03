@@ -1,0 +1,32 @@
+<table id="example2" class="table table-bordered table-hover table-list-account">
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>Tanggal</th>
+      <th>Nama Yayasan</th>
+      <th>Keterangan</th>
+      <th>Jumlah</th>
+      <!-- <th></th> -->
+    </tr>
+  </thead>
+  <tbody>
+    <% for(let i = 0; i < listAllCatatan.length; i++) { %>
+    <tr>
+      <td><%= i + 1 %></td>
+      <td>
+        <%= listAllCatatan[i].date.toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year:
+        'numeric' }) %>
+      </td>
+      <td><%= listAllCatatan[i].account?.fullname ?? '-' %></td>
+      <td><%= listAllCatatan[i].description %></td>
+      <td>Rp.<%= listAllCatatan[i].amount.toLocaleString() %></td>
+      <!-- <td class="d-flex">
+        <a href="/list-account/<%#= listAllCatatan[i].id %>" class="btn btn-info btn-sm">
+          <i class="fas fa-pencil-alt"></i>
+          Ubah
+        </a>
+      </td> -->
+    </tr>
+    <% } %>
+  </tbody>
+</table>

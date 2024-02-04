@@ -9,6 +9,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      journal.belongsTo(models.coa, {
+        foreignKey: 'id_coa',
+      });
+
+      journal.belongsTo(models.account, {
+        foreignKey: 'id_account',
+      });
     }
   }
   journal.init(

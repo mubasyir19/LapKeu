@@ -1,0 +1,39 @@
+<table id="example2" class="table table-bordered table-hover table-catatan">
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>Tanggal</th>
+      <th>Keterangan</th>
+      <th>Jumlah</th>
+      <!-- <th></th> -->
+    </tr>
+  </thead>
+  <tbody>
+    <% for(let i = 0; i < catatan.length; i++) { %>
+    <tr>
+      <td><%= i + 1 %></td>
+      <td>
+        <%= catatan[i].date.toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year:
+        'numeric' }) %>
+      </td>
+      <td><%= catatan[i].description %></td>
+      <td>Rp.<%= catatan[i].amount.toLocaleString() %></td>
+      <!-- <td class="d-flex">
+        <a href="<%#= catatan[i].id %>" class="btn btn-info btn-sm">
+          <i class="fas fa-pencil-alt"></i>
+          Ubah
+        </a>
+        <a
+          href="javascript:void()"
+          type="button"
+          class="btn btn-danger btn-sm ml-1 button-delete-catatan"
+          data-id="<%#= catatan[i].id %>"
+        >
+          <i class="fas fa-trash-alt"></i>
+          Hapus
+        </a>
+      </td> -->
+    </tr>
+    <% } %>
+  </tbody>
+</table>

@@ -40,6 +40,7 @@ module.exports = {
         where: {
           id_account: user,
         },
+        order: [['date', 'DESC']],
       });
 
       res.render('admin/catatan/view_catatan', {

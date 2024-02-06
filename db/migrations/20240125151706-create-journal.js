@@ -20,11 +20,9 @@ module.exports = {
       id_coa: {
         type: Sequelize.STRING,
       },
-      debit: {
-        type: Sequelize.INTEGER,
-      },
-      kredit: {
-        type: Sequelize.INTEGER,
+      typeAmount: {
+        type: Sequelize.ENUM(['Debit', 'Kredit']),
+        defaultValue: 'Debit',
       },
       createdAt: {
         allowNull: false,

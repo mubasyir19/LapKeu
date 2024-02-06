@@ -24,6 +24,9 @@ module.exports = {
         type: Sequelize.ENUM(['Debit', 'Kredit']),
         defaultValue: 'Debit',
       },
+      amount: {
+        type: Sequelize.INTEGER,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

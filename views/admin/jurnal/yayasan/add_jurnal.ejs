@@ -31,8 +31,17 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="/catatan/tambah" method="post">
+                <form action="/jurnal/<%= fullname %>/tambah" method="post">
                   <div class="card-body">
+                    <div class="form-group">
+                      <label>Pilih Kode Chart of Account</label>
+                       <select class="form-control select2" style="width: 100%;" name="noteSelect" id="noteSelect" onchange="isiFieldInput()" required>
+                          <option selected disabled>Pilih Catatan</option>
+                          <% notes.forEach(note => { %>
+                              <option value="<%= JSON.stringify(note) %>"><%= note.description %></option>
+                          <% }) %>
+                      </select>
+                    </div>
                     <div class="form-group">
                         <label for="date">Pilih Tanggal</label>
                         <input type="date" name="date" class="form-control" id="date" placeholder="Pilih tanggal" required>
@@ -42,29 +51,26 @@
                       <input type="text" name="description" class="form-control" id="description" placeholder="Masukkan keterangan" required>
                     </div>
                     <div class="form-group">
-                        <label>Pilih Kode Chart of Account</label>
-                         <select class="form-control select2" style="width: 100%;" name="id_kategori" required>
-                            <option selected="selected">Pilih Kode</option>
-                            <% code.forEach(item => { %>
-                                <option value="<%= item.id %>"><%= item.name %></option>
-                            <% }) %>
-                        </select>
+                      <label for="amount">Masukkan Jumlah</label>
+                      <input type="number" name="amount" class="form-control" id="amount" placeholder="Masukkan jumlah" required>
                     </div>
                     <div class="form-group">
-                      <label for="amount">Masukkan Jumlah Debit</label>
-                      <input type="text" name="amount" class="form-control" id="amount" placeholder="Masukkan jumlah" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Pilih Tipe</label>
-                         <select class="form-control select2" style="width: 100%;" name="transactionType" id="transactionType">
-                            <option selected="selected">Pilih Tipe</option>
+                        <label>Pilih Tipe (Debit / Kredit)</label>
+                         <select class="form-control select2" style="width: 100%;" name="typeAmount" id="typeAmount">
+                            <option selected disabled>Pilih Tipe</option>
                             <option value="Debit">Debit</option>
                             <option value="Kredit">Kredit</option>
                         </select>
                     </div>
-                    <div class="form-group" id="kreditField" style="display: none;">
-                        <label for="kredit">Masukkan Jumlah Kredit</label>
-                        <input type="number" name="kredit" class="form-control" id="Kredit" placeholder="Masukkan jumlah kredit">
+                    <div class="form-group">
+                      <label>Pilih Kode Chart of Account</label>
+                       <select class="form-control select2" style="width: 100%;" name="id_coa" id="id_coa" required>
+                          <option selected disabled>Pilih Kode</option>
+                          <% code.forEach(item => { %>
+                              <option value="<%= item.id %>"><%= item.name %> (<span class="badge badge-success"><%= item.position%>)</span></option>
+                              <!-- <option value="<%#= item.id %>"><%#= item.name %></option> -->
+                          <% }) %>
+                      </select>
                     </div>
                   </div>
                   <div class="card-footer">
@@ -81,5 +87,38 @@
     <!-- /.content -->
   </div>
 
+  <script>
+    // script.js
+    function isiFieldInput() {
+      let noteSelect = document.getElementById('noteSelect');
+      let noteValue = JSON.parse(noteSelect.value);
+      let descriptionField = document.getElementById('description');
+      let amountField = document.getElementById('amount');
+      let dateField = document.getElementById('date');
+
+      descriptionField.value = noteValue.description;
+      amountField.value = noteValue.amount;
+      dateField.value = noteValue.date.slice(0,10);
+      
+      //let selectDesc = JSON.parse(selectedNoteId)
+
+      console.log("selectedNoteId => ", noteValue);
+      console.log("typeAmount => ", typeAmountField.value);
+      //console.log("selectDesc => ", selectDesc);
+      //console.log("desc => ", selectDesc.description);
+      
+      // let selectedNote = notes.find((note) => note.id == selectedNoteId);
+      
+      // console.log(descriptionField.value);
+      // console.log(descriptionField.value);
+
+      // Setel nilai deskripsi dan amount berdasarkan pilihan note
+      //if (selectedNote) {
+        //descriptionField.value = selectedNote.description;
+        //amountField.value = selectedNote.amount;
+      //}
+    }
+
+  </script>
 <%- include ("../../../partials/footer.ejs") %>
 <%- include ("../../../partials/js.ejs") %>

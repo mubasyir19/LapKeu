@@ -25,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       description: DataTypes.STRING,
       id_coa: DataTypes.STRING,
       typeAmount: DataTypes.ENUM(['Debit', 'Kredit']),
+      amount: DataTypes.INTEGER,
     },
     {
       sequelize,

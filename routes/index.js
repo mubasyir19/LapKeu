@@ -37,5 +37,6 @@ router.post('/catatan/tambah', catatan.actionAddCatatan);
 router.get('/jurnal', jurnal.viewJurnal);
 router.get('/jurnal/:fullname', jurnal.viewDetailJurnalYayasan);
 router.get('/jurnal/:fullname/tambah', jurnal.viewAddJurnalYayasan);
+router.post('/jurnal/:fullname/tambah', jurnal.actionAddJurnalYayasan);
 
 module.exports = router;

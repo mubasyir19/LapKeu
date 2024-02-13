@@ -5,6 +5,7 @@ const dashboard = require('../app/dashboard/controller');
 const coa = require('../app/coa/controller');
 const catatan = require('../app/catatan/controller');
 const jurnal = require('../app/jurnal/controller');
+const bukuBesar = require('../app/buku-besar/controller');
 
 // authentication
 router.get('/', account.viewLogin);
@@ -40,5 +41,8 @@ router.get('/jurnal', jurnal.viewJurnal);
 router.get('/jurnal/:fullname', jurnal.viewDetailJurnalYayasan);
 router.get('/jurnal/:fullname/tambah', jurnal.viewAddJurnalYayasan);
 router.post('/jurnal/:fullname/tambah', jurnal.actionAddJurnalYayasan);
+
+// Buku Besar
+router.get('/buku-besar', bukuBesar.viewBukuBesar);
 
 module.exports = router;

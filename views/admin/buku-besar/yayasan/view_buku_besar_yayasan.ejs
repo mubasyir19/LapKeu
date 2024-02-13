@@ -1,0 +1,119 @@
+<!-- Header -->
+<%- include('../../../partials/header.ejs') %>
+<!-- Navbar -->
+<%- include('../../../partials/navbar.ejs') %>
+<!-- Sidebar -->
+<%- include('../../../partials/sidebar.ejs') %>
+
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <%- include ("../../../partials/message.ejs") %>
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Buku Besar <%#= yayasan.fullname %></h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+            <li class="breadcrumb-item"><a href="/jurnal">Jurnal</a></li>
+            <li class="breadcrumb-item active"><%#= yayasan.fullname %></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <!-- <div class="card-header">
+              <h3 class="card-title">
+                <a href="/jurnal" class="btn btn-primary">
+                  <i class="nav-icon far fa-plus-square"></i>
+                  Tambah
+                </a>
+              </h3>
+            </div> -->
+            <!-- /.card-header -->
+            <div class="card-body">
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link active"
+                    id="home-tab"
+                    data-toggle="tab"
+                    data-target="#home"
+                    type="button"
+                    role="tab"
+                    aria-controls="home"
+                    aria-selected="true"
+                  >
+                    Catatan
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link"
+                    id="profile-tab"
+                    data-toggle="tab"
+                    data-target="#profile"
+                    type="button"
+                    role="tab"
+                    aria-controls="profile"
+                    aria-selected="false"
+                  >
+                    Jurnal
+                  </button>
+                </li>
+              </ul>
+              <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active pt-3" id="home" role="tabpanel" aria-labelledby="home-tab">
+                  <%#- include ("./table_catatan.ejs") %>
+                </div>
+                <div class="tab-pane fade pt-3" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                  <h3>
+                    <a
+                      href="/jurnal/<%#= encodeURIComponent(yayasan.fullname.replace(/\s+/g, '-')) %>/tambah"
+                      class="btn btn-primary"
+                    >
+                      <i class="nav-icon far fa-plus-square"></i>
+                      Tambah
+                    </a>
+                  </h3>
+                  <%#- include ("./table_jurnal.ejs") %>
+                </div>
+              </div>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+
+<!-- Delete Validation  -->
+<%#- include("./validation.ejs") %>
+<!--   Footer   -->
+<%- include('../../../partials/footer.ejs') %>
+<!--   Core JS Files   -->
+<%- include('../../../partials/js.ejs') %>
+
+<script>
+  $('.table-coa').on('click', '.button-delete-catatan', function () {
+    let id = $(this).data('id');
+    $('#delete-modal-catatan').modal('show');
+    $('.id').val(id);
+  });
+</script>

@@ -5,6 +5,8 @@
       <th>Tanggal</th>
       <th>Keterangan</th>
       <th>Jumlah</th>
+      <th>Tipe</th>
+      <th>Bank</th>
       <th></th>
     </tr>
   </thead>
@@ -18,6 +20,8 @@
       </td>
       <td><%= listCatatan[i].description %></td>
       <td>Rp.<%= listCatatan[i].amount.toLocaleString() %></td>
+      <td><%= listCatatan[i].type %></td>
+      <td><%= listCatatan[i].bank ?? '-' %></td>
       <td class="d-flex">
         <a href="/catatan/ubah/<%= listCatatan[i].id %>" class="btn btn-info btn-sm">
           <i class="fas fa-pencil-alt"></i>

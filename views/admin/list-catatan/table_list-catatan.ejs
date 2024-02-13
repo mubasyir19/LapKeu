@@ -6,7 +6,8 @@
       <th>Nama Yayasan</th>
       <th>Keterangan</th>
       <th>Jumlah</th>
-      <!-- <th></th> -->
+      <th>Tipe</th>
+      <th>Bank</th>
     </tr>
   </thead>
   <tbody>
@@ -20,12 +21,8 @@
       <td><%= listAllCatatan[i].account?.fullname ?? '-' %></td>
       <td><%= listAllCatatan[i].description %></td>
       <td>Rp.<%= listAllCatatan[i].amount.toLocaleString() %></td>
-      <!-- <td class="d-flex">
-        <a href="/list-account/<%#= listAllCatatan[i].id %>" class="btn btn-info btn-sm">
-          <i class="fas fa-pencil-alt"></i>
-          Ubah
-        </a>
-      </td> -->
+      <td><%= listAllCatatan[i].type %></td>
+      <td><%= listAllCatatan[i].bank ?? '-' %></td>
     </tr>
     <% } %>
   </tbody>

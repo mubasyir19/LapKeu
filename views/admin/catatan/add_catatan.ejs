@@ -38,7 +38,33 @@
                     </div>
                     <div class="form-group">
                       <label for="amount">Masukkan Jumlah</label>
-                      <input type="text" name="amount" class="form-control" id="amount" placeholder="Masukkan jumlah" required>
+                      <input type="number" name="amount" class="form-control" id="amount" placeholder="Masukkan jumlah" required>
+                    </div>
+                    <div class="form-group">
+                      <label>Pilih Tipe (Cash / Transfer)</label>
+                       <select class="form-control select2" style="width: 100%;" name="type" id="type">
+                          <option value="Cash">Cash</option>
+                          <option value="Transfer">Transfer</option>
+                      </select>
+                    </div>
+                    <div class="form-group" id="form_bank">
+                      <label>Pilih Bank <span class="text-danger"><sup>*Jika Transfer</sup></span></label>
+                       <select class="form-control select2" style="width: 100%;" name="bank" id="bank">
+                          <option selected disabled>Pilih Bank</option>
+                          <option value="BNI">BNI</option>
+                          <option value="BRI">BRI</option>
+                          <option value="Mandiri">Mandiri</option>
+                          <option value="BTN">BTN</option>
+                          <option value="BCA">BCA</option>
+                          <option value="Danamon">Danamon</option>
+                          <option value="BSI">BSI</option>
+                          <option value="CIMB Niaga">CIMB Niaga</option>
+                          <option value="Maybank">Maybank</option>
+                          <option value="OCBC NISP">OCBC NISP</option>
+                          <option value="Muamalat">Muamalat</option>
+                          <option value="Mega">Mega</option>
+                          <option value="BTPN">BTPN</option>
+                      </select>
                     </div>
                     <div class="form-group">
                       <label for="date">Pilih Tanggal</label>
@@ -58,6 +84,29 @@
     </section>
     <!-- /.content -->
   </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  <script>
+      $(document).ready(function () {
+          let typeSelect = $('#type');
+          let formBank = $('#form_bank');
+
+          // Sembunyikan form bank saat halaman dimuat
+          formBank.hide();
+
+          // Tambahkan event listener untuk perubahan pada select
+          typeSelect.change(function () {
+              if (typeSelect.val() === 'Transfer') {
+                  // Jika dipilih Transfer, tampilkan form bank
+                  formBank.show();
+              } else {
+                  // Jika dipilih Cash, sembunyikan form bank
+                  formBank.hide();
+              }
+          });
+      });
+  </script>
+
 
 <%- include ("../../partials/footer.ejs") %>
 <%- include ("../../partials/js.ejs") %>

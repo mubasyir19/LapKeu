@@ -71,13 +71,15 @@ module.exports = {
     try {
       let user = req.session.account.id;
       const noteId = uuid.v4();
-      const { description, amount, date } = req.body;
+      const { description, amount, date, type, bank } = req.body;
 
       await note.create({
         id: noteId,
         id_account: user,
         description,
         amount,
+        type,
+        bank,
         date,
       });
 

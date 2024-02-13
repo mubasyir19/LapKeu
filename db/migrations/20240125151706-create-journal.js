@@ -25,7 +25,7 @@ module.exports = {
         defaultValue: 'Debit',
       },
       amount: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
       },
       createdAt: {
         allowNull: false,

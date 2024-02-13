@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       id_account: DataTypes.STRING,
       description: DataTypes.STRING,
-      amount: DataTypes.INTEGER,
+      amount: DataTypes.BIGINT,
       date: DataTypes.DATE,
     },
     {

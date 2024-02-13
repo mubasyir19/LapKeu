@@ -19,6 +19,8 @@ module.exports = (sequelize, DataTypes) => {
       id_account: DataTypes.STRING,
       description: DataTypes.STRING,
       amount: DataTypes.BIGINT,
+      type: DataTypes.ENUM(['Cash', 'Transfer']),
+      bank: DataTypes.STRING,
       date: DataTypes.DATE,
     },
     {

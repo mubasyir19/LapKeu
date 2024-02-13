@@ -17,6 +17,12 @@ module.exports = {
       amount: {
         type: Sequelize.BIGINT,
       },
+      type: {
+        type: Sequelize.ENUM(['Cash', 'Transfer']),
+      },
+      bank: {
+        type: Sequelize.STRING,
+      },
       date: {
         type: Sequelize.DATE,
       },

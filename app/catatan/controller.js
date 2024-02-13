@@ -92,4 +92,60 @@ module.exports = {
       res.redirect('/catatan');
     }
   },
+  viewEditCatatan: async (req, res) => {
+    try {
+      const { id } = req.params;
+      let user = req.session.account.id;
+
+      const catatan = await note.findOne({
+        where: {
+          id,
+          id_account: user,
+        },
+        order: [['date', 'DESC']],
+      });
+
+      res.render('admin/catatan/edit_catatan', {
+        route: 'Catatan',
+        catatan,
+      });
+    } catch (error) {
+      console.log(error);
+      req.flash('alertMessage', `Terjadi Masalah`);
+      req.flash('alertStatus', 'danger');
+      res.redirect('/catatan');
+    }
+  },
+  actionEditCatatan: async (req, res) => {
+    try {
+      let user = req.session.account.id;
+      const { id } = req.params;
+      const { description, amount, date } = req.body;
+
+      const catatan = await note.findOne({
+        where: {
+          id,
+          id_account: user,
+        },
+        order: [['date', 'DESC']],
+      });
+
+      await catatan.update({
+        id_account: user,
+        description,
+        amount,
+        date,
+      });
+
+      req.flash('alertMessage', 'Berhasil tambah catatan');
+      req.flash('alertStatus', 'success');
+
+      res.redirect('/catatan');
+    } catch (error) {
+      console.log(error);
+      req.flash('alertMessage', `Terjadi Masalah`);
+      req.flash('alertStatus', 'danger');
+      res.redirect('/catatan');
+    }
+  },
 };

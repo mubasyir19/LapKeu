@@ -51,16 +51,16 @@ module.exports = {
       });
 
       const jurnal = await journal.findAll({
+        where: {
+          id_account: yayasan.id,
+        },
         include: {
           model: coa,
           attributes: ['id', 'code', 'name', 'position'],
         },
-        where: {
-          id_account: yayasan.id,
-        },
       });
 
-      console.log('data jurnal => ', jurnal.id_coa);
+      console.log('data jurnal => ', jurnal);
       // console.log('data catatan => ', catatan);
 
       res.render('admin/jurnal/yayasan/view_jurnal_yayasan', {

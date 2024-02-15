@@ -20,10 +20,10 @@ module.exports = {
       id_coa: {
         type: Sequelize.STRING,
       },
-      Debit: {
+      debit: {
         type: Sequelize.BIGINT,
       },
-      Kredit: {
+      kredit: {
         type: Sequelize.BIGINT,
       },
       createdAt: {

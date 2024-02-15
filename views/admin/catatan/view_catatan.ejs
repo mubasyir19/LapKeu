@@ -63,7 +63,7 @@
 <%- include('../../partials/js.ejs') %>
 
 <script>
-  $('.table-coa').on('click', '.button-delete-catatan', function () {
+  $('.table-catatan').on('click', '.button-delete-catatan', function () {
     let id = $(this).data('id');
     $('#delete-modal-catatan').modal('show');
     $('.id').val(id);

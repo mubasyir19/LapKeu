@@ -150,4 +150,30 @@ module.exports = {
       res.redirect('/catatan');
     }
   },
+  actionDeleteCatatan: async (req, res) => {
+    try {
+      const { id } = req.body;
+      const getCatatan = await note.findOne({
+        where: { id },
+      });
+
+      if (!getCatatan) {
+        req.flash('alertMessage', 'Catatan tidak ditemukan');
+        req.flash('alertStatus', 'danger');
+        return res.redirect('/catatan');
+      }
+
+      await getCatatan.destroy();
+
+      req.flash('alertMessage', 'Berhasil hapus catatan');
+      req.flash('alertStatus', 'success');
+
+      res.redirect('/catatan');
+    } catch (error) {
+      console.log(error);
+      req.flash('alertMessage', `Terjadi Kesalahan, gagal hapus catatan`);
+      req.flash('alertStatus', 'danger');
+      res.redirect('/catatan');
+    }
+  },
 };

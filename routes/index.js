@@ -35,6 +35,7 @@ router.get('/catatan/tambah', catatan.viewAddCatatan);
 router.post('/catatan/tambah', catatan.actionAddCatatan);
 router.get('/catatan/ubah/:id', catatan.viewEditCatatan);
 router.put('/catatan/ubah/:id', catatan.actionEditCatatan);
+router.delete('/catatan/hapus', catatan.actionDeleteCatatan);
 
 // Jurnal
 router.get('/jurnal', jurnal.viewJurnal);

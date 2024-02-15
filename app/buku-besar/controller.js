@@ -28,5 +28,30 @@ module.exports = {
       res.redirect('/dashboard');
     }
   },
-  viewDetailBukuBesarYayasan: async (req, res) => {},
+  viewDetailBukuBesarYayasan: async (req, res) => {
+    try {
+      const { fullname } = req.params;
+
+      const alertMessage = req.flash('alertMessage');
+      const alertStatus = req.flash('alertStatus');
+      const alert = { message: alertMessage, status: alertStatus };
+
+      const fullnameDecode = decodeURIComponent(fullname.replace(/-/g, ' '));
+
+      const yayasan = await account.findOne({
+        where: { fullname: fullnameDecode },
+      });
+
+      res.render('admin/buku-besar/yayasan/view_buku_besar_yayasan', {
+        route: 'Buku Besar',
+        yayasan,
+        alert,
+      });
+    } catch (error) {
+      console.log(error);
+      req.flash('alertMessage', `Terjadi Masalah`);
+      req.flash('alertStatus', 'danger');
+      res.redirect('/buku-besar');
+    }
+  },
 };

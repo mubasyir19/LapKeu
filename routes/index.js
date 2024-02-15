@@ -44,5 +44,6 @@ router.post('/jurnal/:fullname/tambah', jurnal.actionAddJurnalYayasan);
 
 // Buku Besar
 router.get('/buku-besar', bukuBesar.viewBukuBesar);
+router.get('/buku-besar/:fullname', bukuBesar.viewDetailBukuBesarYayasan);
 
 module.exports = router;

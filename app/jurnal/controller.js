@@ -111,7 +111,7 @@ module.exports = {
   actionAddJurnalYayasan: async (req, res) => {
     try {
       const { fullname } = req.params;
-      const { date, description, id_coa, typeAmount, amount } = req.body;
+      const { date, description, id_coa, debit, kredit } = req.body;
       const journalId = uuid.v4();
 
       const fullnameDecode = decodeURIComponent(fullname.replace(/-/g, ' '));
@@ -126,8 +126,8 @@ module.exports = {
         date,
         description,
         id_coa,
-        typeAmount,
-        amount,
+        debit,
+        kredit,
       });
 
       req.flash('alertMessage', `Berhasil tambah jurnal ${yayasan.fullname}`);

@@ -9,7 +9,9 @@ module.exports = {
 
       const alert = { message: alertMessage, status: alertStatus };
 
-      const listCoa = await coa.findAll();
+      const listCoa = await coa.findAll({
+        order: [['code', 'ASC']],
+      });
 
       res.render('admin/coa/view_coa', {
         route: 'Coa',

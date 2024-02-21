@@ -4,7 +4,7 @@
       <th>No.</th>
       <th>Tanggal</th>
       <th>Keterangan</th>
-      <th>Kode Akun</th>
+      <th>REF</th>
       <th>Debit</th>
       <th>Kredit</th>
       <th></th>
@@ -22,8 +22,8 @@
       <td>
         <span class="badge badge-success"><%= jurnal[i]?.coa?.code ?? '-' %></span>
       </td>
-      <td>Rp.<%= (jurnal[i].typeAmount === 'Debit') ? jurnal[i].amount.toLocaleString() : '-' %></td>
-      <td>Rp.<%= (jurnal[i].typeAmount === 'Kredit') ? jurnal[i].amount.toLocaleString() : '-' %></td>
+      <td>Rp.<%= jurnal[i].debit.toLocaleString() ?? '-' %></td>
+      <td>Rp.<%= jurnal[i].kredit.toLocaleString() ?? '-' %></td>
 
       <td class="d-flex">
         <a href="#<%= jurnal[i].id %>" class="btn btn-info btn-sm">

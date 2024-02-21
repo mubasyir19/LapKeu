@@ -22,9 +22,11 @@ module.exports = {
       },
       debit: {
         type: Sequelize.BIGINT,
+        defaultValue: 0,
       },
       kredit: {
         type: Sequelize.BIGINT,
+        defaultValue: 0,
       },
       createdAt: {
         allowNull: false,

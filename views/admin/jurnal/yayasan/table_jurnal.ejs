@@ -1,7 +1,7 @@
-<table id="example1" class="table table-bordered table-hover table-jurnal">
+<table id="example2" class="table table-bordered table-hover table-jurnal">
   <thead>
     <tr>
-      <th>No.</th>
+      <!-- <th>No.</th> -->
       <th>Tanggal</th>
       <th>Keterangan</th>
       <th>REF</th>
@@ -13,7 +13,7 @@
   <tbody>
     <% for(let i = 0; i < jurnal.length; i++) { %>
     <tr>
-      <td><%= i + 1 %></td>
+      <!-- <td><%#= i + 1 %></td> -->
       <td>
         <%= jurnal[i].date.toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
         }) %>

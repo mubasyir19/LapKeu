@@ -31,6 +31,7 @@ module.exports = {
   viewDetailJurnalYayasan: async (req, res) => {
     try {
       const { fullname } = req.params;
+      const reservation = req.query.reservation;
 
       const alertMessage = req.flash('alertMessage');
       const alertStatus = req.flash('alertStatus');
@@ -58,9 +59,10 @@ module.exports = {
           model: coa,
           attributes: ['id', 'code', 'name', 'position'],
         },
+        order: [['date', 'ASC']],
       });
 
-      console.log('data jurnal => ', jurnal);
+      // console.log('data jurnal => ', jurnal);
       // console.log('data catatan => ', catatan);
 
       res.render('admin/jurnal/yayasan/view_jurnal_yayasan', {
@@ -94,6 +96,11 @@ module.exports = {
         },
       });
 
+      // console.log('ini saldo yayasan => ', yayasan.saldo);
+      // notes.forEach((nt) => {
+      //   console.log('Ini jumlah uang dari catatan =>', nt.amount);
+      // });
+
       res.render('admin/jurnal/yayasan/add_jurnal', {
         route: 'Jurnal',
         yayasan,
@@ -120,7 +127,7 @@ module.exports = {
         where: { fullname: fullnameDecode },
       });
 
-      await journal.create({
+      const response = await journal.create({
         id: journalId,
         id_account: yayasan.id,
         date,
@@ -129,6 +136,16 @@ module.exports = {
         debit,
         kredit,
       });
+
+      console.log('Response add journal => ', response);
+
+      const saldoInt = parseInt(yayasan.saldo, 10); // Mengubah saldo menjadi integer
+      const debitInt = parseInt(debit, 10); // Mengubah debit menjadi integer
+      const kreditInt = parseInt(kredit, 10); // Mengubah kredit menjadi integer
+      const updateSaldo = saldoInt + debitInt - kreditInt; // Menggunakan nilai integer untuk perhitungan
+      const updateSaldoYayasan = await yayasan.update({ saldo: updateSaldo });
+
+      console.log('Update saldo yayasan => ', updateSaldoYayasan);
 
       req.flash('alertMessage', `Berhasil tambah jurnal ${yayasan.fullname}`);
       req.flash('alertStatus', 'success');

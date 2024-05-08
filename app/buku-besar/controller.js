@@ -1,4 +1,4 @@
-const { account, note, coa } = require('../../db/models');
+const { account, note, coa, journal } = require('../../db/models');
 const uuid = require('uuid');
 
 module.exports = {
@@ -42,10 +42,36 @@ module.exports = {
         where: { fullname: fullnameDecode },
       });
 
+      const jurnal = await journal.findAll({
+        where: {
+          id_account: yayasan.id,
+        },
+        include: [
+          {
+            model: coa,
+            attributes: ['id', 'code', 'name', 'position'],
+          },
+          {
+            model: account,
+            attributes: ['id', 'saldo', 'fullname'],
+            where: {
+              id: yayasan.id, // Filter untuk mendapatkan account yayasan
+            },
+          },
+        ],
+        order: [['date', 'ASC']],
+      });
+
+      for (let i = 0; i < jurnal.length; i++) {
+        console.log('Nama Yayasan:', jurnal[i].account.fullname);
+        console.log('Saldo Yayasan:', jurnal[i].account.saldo);
+      }
+
       res.render('admin/buku-besar/yayasan/view_buku_besar_yayasan', {
         route: 'Buku Besar',
         yayasan,
         alert,
+        jurnal,
       });
     } catch (error) {
       console.log(error);

@@ -58,13 +58,15 @@
             <p>List Catatan</p>
           </a>
         </li>
-        <li class="nav-header">Input</li>
-        <li class="nav-item">
-          <a href="/catatan" class="nav-link <%= route === "Catatan" ? 'active': ' ' %>">
-            <i class="nav-icon far fa-clipboard"></i>
-            <p>Catatan</p>
-          </a>
-        </li>
+        <%# if (account.role === 'Yayasan') { %>
+          <li class="nav-header">Input</li>
+          <li class="nav-item">
+            <a href="/catatan" class="nav-link <%= route === "Catatan" ? 'active': ' ' %>">
+              <i class="nav-icon far fa-clipboard"></i>
+              <p>Catatan</p>
+            </a>
+          </li>
+        <%# } %>
         <li class="nav-header">Master Data</li>
         <li class="nav-item">
           <a href="/coa" class="nav-link <%= route === "Coa" ? 'active': ' ' %>">

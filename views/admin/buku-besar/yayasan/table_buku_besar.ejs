@@ -1,0 +1,38 @@
+<table id="example1" class="table table-bordered table-hover table-buku-besar">
+  <thead align="center">
+    <tr>
+      <th>Tanggal</th>
+      <th>Keterangan</th>
+      <th>REF</th>
+      <th>Debit</th>
+      <th>Kredit</th>
+      <th colspan="2">Saldo</th>
+      <!-- <th></th> -->
+    </tr>
+    <tr>
+      <th colspan="5"></th>
+      <th>Total Debit</th>
+      <th>Total Kredit</th>
+      <!-- <th></th> -->
+    </tr>
+  </thead>
+  <tbody>
+    <% for(let i = 0; i < jurnal.length; i++) { %>
+    <tr>
+      <td><%= jurnal[i].date.toLocaleDateString('en-GB', { year: '2-digit', month: 'short', day: 'numeric' }) %></td>
+      <td><%= jurnal[i].description %></td>
+      <td>
+        <span class="badge badge-success"><%= jurnal[i]?.coa?.code ?? '-' %></span>
+      </td>
+      <td>Rp.<%= jurnal[i].debit.toLocaleString() ?? '-' %></td>
+      <td>Rp.<%= jurnal[i].kredit.toLocaleString() ?? '-' %></td>
+      <% if (i === jurnal.length - 1) { %>
+      <td>Rp.<%= jurnal[i].account.saldo.toLocaleString() ?? '-' %></td>
+      <% } else { %>
+      <td></td>
+      <% } %>
+      <td></td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>

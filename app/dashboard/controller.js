@@ -6,9 +6,11 @@ module.exports = {
 
       const alert = { message: alertMessage, status: alertStatus };
 
+      // console.log(req.session.account.id);
       res.render('index', {
         route: 'Dashboard',
         alert,
+        // account: req.session.account,
       });
     } catch (error) {
       console.log(error);

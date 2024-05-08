@@ -77,15 +77,33 @@
                   <%- include ("./table_catatan.ejs") %>
                 </div>
                 <div class="tab-pane fade pt-3" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                  <h3>
-                    <a
-                      href="/jurnal/<%= encodeURIComponent(yayasan.fullname.replace(/\s+/g, '-')) %>/tambah"
-                      class="btn btn-primary"
-                    >
-                      <i class="nav-icon far fa-plus-square"></i>
-                      Tambah
-                    </a>
-                  </h3>
+                  <div class="d-flex justify-content-between">
+                    <h3 class="my-auto">
+                      <a
+                        href="/jurnal/<%= encodeURIComponent(yayasan.fullname.replace(/\s+/g, '-')) %>/tambah"
+                        class="btn btn-primary"
+                      >
+                        <i class="nav-icon far fa-plus-square"></i>
+                        Tambah
+                      </a>
+                    </h3>
+                    <form class="d-flex my-auto" action="/jurnal/<%= yayasan.fullname %>" method="get">
+                      <div class="form-group my-auto">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">
+                              <i class="far fa-calendar-alt"></i>
+                            </span>
+                          </div>
+                          <input type="text" class="form-control float-right" id="reservation" />
+                        </div>
+                      </div>
+                      <div class="form-group my-auto ml-2">
+                        <button type="submit" class="btn btn-sm btn-primary">apply</button>
+                      </div>
+                    </form>
+                    <div class=""></div>
+                  </div>
                   <%- include ("./table_jurnal.ejs") %>
                 </div>
               </div>
@@ -115,5 +133,24 @@
     let id = $(this).data('id');
     $('#delete-modal-catatan').modal('show');
     $('.id').val(id);
+  });
+
+  // Mendapatkan elemen input
+  const reservationInput = document.getElementById('reservation');
+
+  // Menambahkan event listener untuk event keypress
+  reservationInput.addEventListener('keypress', function (event) {
+    // Memeriksa apakah tombol yang ditekan adalah tombol Enter
+    if (event.key === 'Enter') {
+      // Mendapatkan nilai dari elemen input
+      const reservationValue = reservationInput.value;
+
+      const [startDate, endDate] = reservationValue.split(' - ');
+
+      // Menampilkan nilai tersebut di console browser
+      console.log(reservationValue);
+      console.log(startDate);
+      console.log(endDate);
+    }
   });
 </script>

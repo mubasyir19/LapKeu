@@ -1,0 +1,17 @@
+'use strict';
+
+/** @type {import('sequelize-cli').Migration} */
+module.exports = {
+  async up(queryInterface, Sequelize) {
+    await queryInterface.addColumn('Accounts', 'kas', {
+      type: Sequelize.BIGINT,
+      defaultValue: 0,
+    });
+
+    await queryInterface.sequelize.query(`UPDATE "Accounts" SET "kas" = '0' WHERE "role" = 'Yayasan';`);
+  },
+
+  async down(queryInterface, Sequelize) {
+    await queryInterface.removeColumn('Accounts', 'kas');
+  },
+};

@@ -21,6 +21,10 @@ module.exports = {
         type: Sequelize.ENUM(['Admin', 'Yayasan']),
         defaultValue: 'Yayasan',
       },
+      saldo: {
+        type: Sequelize.BIGINT,
+        defaultValue: 0,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
